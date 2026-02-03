@@ -4,6 +4,12 @@ registerSketch('sk2', function (p) {
     p.createCanvas(p.windowWidth, p.windowHeight);
   };
 
+  inCatTimeText = "You are now in cat time!"
+  outCatTimeText = "You are out of cat time!"
+
+  inCatTime = false;
+
+
   p.draw = function () {
     p.background(220);
     p.fill(100, 150, 240);
@@ -14,7 +20,23 @@ registerSketch('sk2', function (p) {
     p.triangle(100, 150, 200, 150, 100, 50)
     p.triangle(200, 150, 100, 150, 200, 50)
 
+    p.push();
+    p.stroke('white');
+    p.strokeWeight(4);
+    p.line(150, 160, 225, 135);
+    p.line(150, 160, 235, 160);
+    p.line(150, 160, 225, 185);
+    p.line(150, 160, 75, 135);
+    p.line(150, 160, 60, 160);
+    p.line(150, 160, 75, 185);
+    p.pop();
 
+    
+    if (inCatTime == true) {
+      p.text(inCatTimeText, 175, 25)
+    } else {
+      p.text(outCatTimeText, 175, 25)
+    }
   };
 
   p.windowResized = function () { p.resizeCanvas(p.windowWidth, p.windowHeight); };
