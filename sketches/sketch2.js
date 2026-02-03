@@ -1,9 +1,12 @@
 // Instance-mode sketch for tab 2
 registerSketch('sk2', function (p) {
+  let button;
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
 
-    let button = p.createButton('Enter Cat Time');
+  
+    button = p.createButton('Enter Cat Time');
+    
     button.position(300, 150);
 
     button.mousePressed(startCatTime);
@@ -17,7 +20,6 @@ registerSketch('sk2', function (p) {
   outCatTimeText = "You are out of cat time!"
 
   inCatTime = false;
-
 
   p.draw = function () {
     p.background(220);
@@ -66,9 +68,28 @@ registerSketch('sk2', function (p) {
     p.line(150, 160, 75, 185);
     p.pop();
 
+    // only show clock while out of cat time
+    // From example sketch 5
+    // Corner time display
+    if (inCatTime == false) {
+      p.push()
+      const h = p.hour();
+      const m = p.minute();
+      const s = p.second();
+      const label = p.nf(h, 2) + ':' + p.nf(m, 2) + ':' + p.nf(s, 2);
+
+      p.noStroke();
+      p.fill(20);
+      p.textAlign(p.LEFT, p.TOP);  // change to RIGHT/BOTTOM for other corners
+      p.textSize(50);
+      p.text(label, 12, 350);   // top-left corner
+      p.pop()
+    }
+
     
     if (inCatTime == true) {
       p.text(inCatTimeText, 475, 25)
+      button.hide()
     } else {
       p.text(outCatTimeText, 175, 25)
     }
