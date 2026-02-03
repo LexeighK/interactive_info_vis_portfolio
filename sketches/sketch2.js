@@ -37,7 +37,22 @@ registerSketch('sk2', function (p) {
       p.strokeWeight(15);
       p.line(160, 340, 285, 285);
       p.pop();
-    } 
+    } else {
+      p.ellipse(210, 225, 190, 115);
+      // tail
+      p.push()
+      p.strokeWeight(15);
+      p.line(280, 200, 400, 165);
+      p.pop();
+      // legs
+      p.push()
+      p.strokeWeight(30);
+      p.line(150, 250, 150, 300);
+      p.line(175, 250, 175, 300);
+      p.line(225, 250, 225, 300);
+      p.line(250, 250, 250, 300);
+      p.pop();
+    }
 
     // Cat Whiskers
     p.push();
