@@ -2,9 +2,18 @@
 registerSketch('sk2', function (p) {
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
+
+    let button = p.createButton('Enter Cat Time');
+    button.position(300, 100);
+
+    button.mousePressed(startCatTime);
   };
 
-  inCatTimeText = "You are now in cat time!"
+  function startCatTime() {
+    inCatTime = true;
+  }
+
+  inCatTimeText = "You are now in cat time!  You will leave when the cat lets you."
   outCatTimeText = "You are out of cat time!"
 
   inCatTime = false;
@@ -33,7 +42,7 @@ registerSketch('sk2', function (p) {
 
     
     if (inCatTime == true) {
-      p.text(inCatTimeText, 175, 25)
+      p.text(inCatTimeText, 475, 25)
     } else {
       p.text(outCatTimeText, 175, 25)
     }
