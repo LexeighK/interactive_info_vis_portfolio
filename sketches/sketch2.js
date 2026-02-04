@@ -1,6 +1,13 @@
 // Instance-mode sketch for tab 2
 registerSketch('sk2', function (p) {
   let button;
+  let amountCatTime;
+  let startCatTimeHour;
+  let startCatTimeMinute;
+
+  let endCatTimeHour;
+  let endCatTimeMinute;
+
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
 
@@ -8,16 +15,18 @@ registerSketch('sk2', function (p) {
     button = p.createButton('Enter Cat Time');
     
     button.position(300, 150);
-
     button.mousePressed(startCatTime);
   };
 
   function startCatTime() {
     inCatTime = true;
+    amountCatTime = Math.random(1, 30)
+    startCatTimeHour = p.hour()
+    startCatTimeMinute = p.minute()
   }
 
   inCatTimeText = "You are now in cat time!  You will leave when the cat lets you."
-  outCatTimeText = "You are out of cat time!"
+  outCatTimeText = "You are not in cat time!"
 
   inCatTime = false;
 
@@ -85,6 +94,8 @@ registerSketch('sk2', function (p) {
       p.text(label, 12, 350);   // top-left corner
       p.pop()
     }
+
+    // Adding cat time random timer
 
     
     if (inCatTime == true) {
