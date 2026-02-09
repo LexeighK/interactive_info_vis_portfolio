@@ -2,27 +2,22 @@
 registerSketch('sk2', function (p) {
   let button;
   let amountCatTime;
-  let startCatTimeHour;
-  let startCatTimeMinute;
-
-  let endCatTimeHour;
-  let endCatTimeMinute;
+  let catTimeStart;
 
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
 
-  
     button = p.createButton('Enter Cat Time');
-    
+    button.size(200, 50);
+    button.style('font-size', '22px');
     button.position(300, 150);
     button.mousePressed(startCatTime);
   };
 
   function startCatTime() {
     inCatTime = true;
-    amountCatTime = Math.random(1, 30)
-    startCatTimeHour = p.hour()
-    startCatTimeMinute = p.minute()
+    catTimeStart = p.hour() * 60 + p.minute();
+    amountCatTime = Math.floor(p.random(5, 30));
   }
 
   inCatTimeText = "You are now in cat time!  You will leave when the cat lets you."
@@ -36,6 +31,19 @@ registerSketch('sk2', function (p) {
     p.textSize(32);
     p.textAlign(p.CENTER, p.CENTER);
     p.fill('black');
+    
+    if (inCatTime) {
+      let currentTime = p.hour() * 60 + p.minute();
+      let timeLeft = amountCatTime - (currentTime - catTimeStart);
+
+      p.textSize(20);
+      p.text("Cat releases you in: " + timeLeft + " min", 400, 150);
+
+      if (currentTime - catTimeStart >= amountCatTime) {
+        inCatTime = false;
+        button.show();
+      }
+    }
     // Cat Head
     p.ellipse(150, 150, 100, 100);
     p.triangle(100, 150, 180, 150, 100, 75)
