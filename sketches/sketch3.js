@@ -5,8 +5,14 @@ registerSketch('sk3', function (p) {
   };
   p.draw = function () {
     p.background(240, 200, 200);
-    p.fill(100, 150, 240);
 
+    // getting time
+    let h = p.hour();
+    let m = p.minute();
+
+    let timeText = p.nf(h, 2) + ":" + p.nf(m, 2);
+
+    p.fill(100, 150, 240);
     p.stroke(100, 150, 240);
     
     // making a person
@@ -17,6 +23,18 @@ registerSketch('sk3', function (p) {
     p.line(125, 500, 125, 360);
     p.line(175, 500, 175, 360);
     p.pop()
+
+    // making paper
+    p.fill(255);
+    p.stroke(0);
+    p.rect(230, 230, 160, 100, 10);
+
+    // putting time on paper
+    p.fill(0);
+    p.noStroke();
+    p.textAlign(p.CENTER, p.CENTER);
+    p.textSize(24);
+    p.text(timeText, 310, 280);
   };
   p.windowResized = function () { p.resizeCanvas(p.windowWidth, p.windowHeight); };
 });
