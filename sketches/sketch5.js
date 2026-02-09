@@ -1,4 +1,4 @@
-// Example 2
+// Example 1
 registerSketch('sk5', function (p) {
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
