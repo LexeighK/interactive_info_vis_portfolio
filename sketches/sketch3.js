@@ -5,10 +5,18 @@ registerSketch('sk3', function (p) {
   };
   p.draw = function () {
     p.background(240, 200, 200);
-    p.fill(180, 60, 60);
-    p.textSize(32);
-    p.textAlign(p.CENTER, p.CENTER);
-    p.text('HWK #4. B', p.width / 2, p.height / 2);
+    p.fill(100, 150, 240);
+
+    p.stroke(100, 150, 240);
+    
+    // making a person
+    p.ellipse(150, 150, 100, 100);
+    p.ellipse(150, 288, 125, 175);
+    p.push()
+    p.strokeWeight(30);
+    p.line(125, 500, 125, 360);
+    p.line(175, 500, 175, 360);
+    p.pop()
   };
   p.windowResized = function () { p.resizeCanvas(p.windowWidth, p.windowHeight); };
 });
