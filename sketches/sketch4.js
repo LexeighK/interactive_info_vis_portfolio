@@ -2,6 +2,11 @@
 registerSketch('sk4', function (p) {
   p.setup = function () {
     p.createCanvas(p.windowWidth, p.windowHeight);
+
+    // Add postcard writing
+    input = p.createInput();
+    input.position(80, 220); 
+    input.size(200);
   };
   p.draw = function () {
     p.background(200, 240, 200);
